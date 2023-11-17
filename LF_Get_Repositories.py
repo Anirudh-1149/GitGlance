@@ -1,7 +1,7 @@
 import requests
 
 def lambda_handler(event, context):
-    github_token = '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'
+    github_token = 'TOKEN'
 
     url = "https://api.github.com/search/issues"
     params = {
