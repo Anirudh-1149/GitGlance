@@ -1,5 +1,6 @@
 import json
 import boto3
+import csv
 
 personalizeClient = boto3.client('personalize-runtime')
 dynamodbClient = boto3.resource('dynamodb')
@@ -9,7 +10,13 @@ tableName = 'repo_store'
 def lambda_handler(event, context):
     RepoIds = []
     recommendedRepos = []
-    new_repos = ["xdy/xdy-pf2e-workbench","terraform-ibm-modules/mock-module","Jekas213/online-store","Ale6100/Proyecto-Polo-IT", "scarvalhojr/aoc-cli", "Rafmn/GB_Paradigms"]
+    s3 = boto3.client('s3')
+    bucket = 'opensource-personalize-traning'
+    key = 'newdata.csv'
+    response = s3.get_object(Bucket=bucket, Key=key)
+    response['Body'].read().decode('utf-8')
+    csv_data = csv.reader(data.splitlines())
+    new_repos = list(csv_data)   
     # user = event["queryStringParameters"]["userid"]
     user = "5"
     personalizeRecommendations = personalizeClient.get_personalized_ranking(
