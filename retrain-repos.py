@@ -64,6 +64,30 @@ def lambda_handler(event, context):
     campaign_arn2 = create_campaign(solution_arn1, min_provisioned_tps, max_provisioned_tps)
     campaign_arn3 = create_campaign(solution_arn2, min_provisioned_tps, max_provisioned_tps)
 
+    dynamodb = boto3.resource('dynamodb')
+    table_name = 'MLLinks'
+    table = dynamodb.Table(table_name)
+
+    item1 = {
+    'id': 'id1',
+    'arn': campaign_arn1,
+    } 
+
+    item2 = {
+    'id': 'id2',
+    'arn': campaign_arn2,
+    }    
+
+    item3 = {
+    'id': 'id3',
+    'arn': campaign_arn3,
+    } 
+
+    table.put_item(Item=item1)
+    table.put_item(Item=item2)
+    table.put_item(Item=item3)
+
+
     return {
         'statusCode': 200,
         'body': 'Successfully created import job, solution, and campaign.'

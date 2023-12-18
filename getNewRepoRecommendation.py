@@ -7,7 +7,18 @@ dynamodbClient = boto3.resource('dynamodb')
 primaryKey = 'repo_url'
 tableName = 'repo_store'
 
+dynamodb = boto3.resource('dynamodb')
+table_name = 'MLLinks'
+
 def lambda_handler(event, context):
+
+    table = dynamodb.Table(table_name)
+    response = table.get_item(
+        Key={
+            'id': 'id1',
+        }
+    )
+
     RepoIds = []
     recommendedRepos = []
     s3 = boto3.client('s3')
@@ -20,7 +31,7 @@ def lambda_handler(event, context):
     # user = event["queryStringParameters"]["userid"]
     user = "5"
     personalizeRecommendations = personalizeClient.get_personalized_ranking(
-        campaignArn='arn:aws:personalize:us-east-1:270687290849:campaign/rankingCampaign',
+        campaignArn=response['Item']['arn'],
         inputList = [{'itemId': item_id} for item_id in recommendedRepos],
         userId=user
     )
