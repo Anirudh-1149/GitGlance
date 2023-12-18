@@ -4,12 +4,14 @@ import boto3
 from botocore.exceptions import ClientError
 
 # === variables ===
-GH_TOKEN = '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'
+GH_TOKEN = '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'
 URL = 'https://api.github.com/search/issues'
 HEADERS = {
     'Authorization': f'Bearer {GH_TOKEN}'
 }
 TABLE_NAME = 'repo_store'
+NEW_REPO_TABLE = 'new_repos_store'
+new_repos_table = boto3.resource('dynamodb').Table(NEW_REPO_TABLE)
 sqs_client = boto3.client('sqs')
 
 
@@ -47,6 +49,8 @@ def lambda_handler(event, context):
                 _repo_url = '/'.join(repo['html_url'].split('/')[:-2])
                 _repo_title = repo['title']
                 
+                if is_repo_present(_repo_url):
+                    continue
                 # _repo_language = repo_info_data.get('language', '')
                 languages_response = requests.get(api_repo_url + "/languages", headers=HEADERS)
                 if languages_response.status_code == 200:
@@ -94,6 +98,21 @@ def insert_data(data, db=None, table=TABLE_NAME):
         _table = db.Table(table)
     if data:
         response = _table.put_item(Item=data)
+def insert_new_data(data):
+    if data :
+        new_repos_table.put_item(Item=data)
+
+def is_repo_present(primaryKeyValue) :
+    response = new_repos_table.get_item(
+        Key={
+            "repo_url" : primaryKeyValue
+        }
+    ) 
+    
+    if 'Item' in response:
+        return True
+    else :
+        return False
 
 
 def send_to_sqs(page_number):
