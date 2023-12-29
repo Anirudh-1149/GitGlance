@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #23272D;
+  color: #B4B4B4;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.main_container {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 70%;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* CARD */
+.card_container {
+  border: 1.5px solid #abb2bb;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  margin: 1rem;
+  padding: 0rem 2rem;
+}
+
+.card_like {
+  font-weight: 600;
+}
+.card_like:hover {
+  cursor: pointer;
+}
+
+
+
+/* NAVBAR */
+.navbar_logo {
+  margin-right: 1rem;
+}
+
+.nav_link {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #B4B4B4;
+  font-weight: 600;
+}
+
+.nav_active {
+  margin: 0 1rem;
+  color: #5E6EF0;
+  font-weight: 500;
+}
+
+/* COMMON */
+.link {
+  color: #5E6EF0;
+}
+
+.topic_link {
+  color: #949cd1;
+  font-size: 1.2rem;
+}
+
+/* AUTHENTICATION */
+.auth_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container_border_center {
+  border: 1.5px solid #abb2bb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  min-width: 20rem;
+}
+
+.container_border_right {
+  border: 1.5px solid #abb2bb;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 5px;
+  min-width: 20rem;
+}
+
+.goto_link {
+  color: #5E6EF0;
+}
+
+/* PREFERENCES PAGE */
+.button_group {
+  margin-top: 3rem;
+  display: flex;
+  width: 100%;
+}
+
+.button_group :first-child {
+  margin-right: 1rem;
+}
+
+.preferences_container {
+  height: 90vh;
+}
+
+.preferences_container .container_border_center {
+  min-width: 65%;
+  max-width: 75%;
+}

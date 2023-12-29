@@ -1,0 +1,7 @@
+export {default as SignUp} from './signup'
+export {default as SignIn} from './signin'
+export {default as Recommendation} from './recommendations'
+export {default as Explore} from './explore'    
+export {default as Liked} from './liked'
+export {default as Newrepos} from './newrepos'
+export {default as Preferences} from './preferences'
