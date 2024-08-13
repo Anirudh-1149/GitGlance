@@ -4,7 +4,7 @@ GitGlance is designed to simplify the process of finding suitable open-source pr
 
 - **Design Prototype**: View the UI/UX design on [Figma](https://www.figma.com/proto/jl6LcC9ho3Qq4WdBqbciZz/CCBD?type=design&node-id=2-597&t=fka5RyfogUtxQxLL-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A597).
 
-![demo](/demo/demo.gif)
+![demo](/demo.gif)
 
 
 ## Existing Solutions
@@ -16,7 +16,7 @@ The primary audience for GitGlance is students eager to engage with open-source 
 
 
 ## Architecture
-![architecture](/demo/architecture.png)
+![architecture](/architecture.png)
 
 
 ## Instructions to run the application
